@@ -9,12 +9,13 @@ load_dotenv()
 app = Flask(__name__)
 
 class Article:
-        def __init__(self, title=None, vendor=None, model=None, android_version=None, publication_date=None, content=None):
+        def __init__(self, title=None, vendor=None, model=None, android_version=None, publication_date=None, links=None, content=None):
             self.title = title
             self.vendor = vendor
             self.model = model
             self.android_version = android_version
             self.publication_date = publication_date
+            self.links = links
             self.content = content
 
 class dbManager():
@@ -270,7 +271,8 @@ class dbManager():
             article.model = row[2]
             article.android_version = row[3]
             article.publication_date = row[4]
-            article.content = row[7]  # Atualize o índice de acordo com a posição correta da coluna de conteúdo
+            article.links = row[5]
+            #article.content = row[7]  # Atualize o índice de acordo com a posição correta da coluna de conteúdo
 
             articles.append(article)
 
